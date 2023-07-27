@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="#" alt="">
+    <button>New cat</button>
+    <input type="text" placeholder="Search" id="searchfield" value="cats">
+    <script>
+        const btn = document.querySelector('button');
+        
+        btn.addEventListener("click", () => { 
+            cat_generator();
+        });
+
+        function cat_generator() {
+            const img = document.querySelector('img');
+            const search = document.querySelector('input');
+            fetch('https://api.giphy.com/v1/gifs/translate?api_key=yx8dO7DMDD4lX2DkGMM3pqjwe7NFwB8K&s=' + search.value, { mode: 'cors' })
+                .then((response) => response.json())
+                .then((response) => {
+                    img.src = response.data.images.original.url;
+                    test();
+                });
+        }
+        cat_generator();
+
+        function test() {
+            console.log('test');
+        }
+
+    // const button = document.querySelector('button');
+    // button.addEventListener("click", cat_generator());
+    </script>
+</body>
+
+</html>
