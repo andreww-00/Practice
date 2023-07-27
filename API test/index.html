@@ -26,7 +26,10 @@
                 .then((response) => {
                     img.src = response.data.images.original.url;
                     test();
-                });
+                })
+                .catch((Rejected) => {
+                    alert('no gif found');
+                })
         }
         cat_generator();
 
